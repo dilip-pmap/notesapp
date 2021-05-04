@@ -23,7 +23,8 @@ export const HomeContainer = ({handleFilter, handleNote, notes}) => {
         setValues({...values, [e.target.name]: e.target.value})
     }
 
-    const handleClose =(item, index) => {
+    const handleClose =(e, item, index) => {
+        e.stopPropagation();
         handleFilter(index);
     }
 
@@ -31,7 +32,7 @@ export const HomeContainer = ({handleFilter, handleNote, notes}) => {
         let results= [];
         notes.forEach((item, index)=> {
             results.push(<div key={`${item}-${index}`} style={{ borderBottom: '1px solid grey'}} onClick={() =>handleEdit(item, index)}>
-             <div onClick={() => handleClose(item, index)} name={`${index}`} className="float-right" style={{ fontSize: 24, cursor: 'pointer'}}> &#x2715; </div>
+             <div onClick={(e) => handleClose(e,item, index)} name={`${index}`} className="float-right" style={{ fontSize: 24, cursor: 'pointer'}}> &#x2715; </div>
              <h3>{item.title}</h3>
              <h5>{item.body}</h5>
              </div>) 

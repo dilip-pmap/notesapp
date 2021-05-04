@@ -7,7 +7,7 @@ export const LoginContainer = ({handleLogin}) => {
         isError: '',
     });
     const handleClick = () => {
-        if(values.userName=== 'dilip', values.password === 'dilip@123') {
+        if(values.userName=== 'dilip' && values.password === 'dilip@123') {
             handleLogin();
         } else {
             setValues({ ...values, isError: "Invalid user name and password"})
@@ -29,7 +29,7 @@ export const LoginContainer = ({handleLogin}) => {
             <br/>
             <br/>
             <br/>
-            {values.isError ? <div class="alert alert-danger" role="alert">
+            {values.isError ? <div className="alert alert-danger" role="alert">
                 {values.isError}</div> : null}
         </div>
     )
